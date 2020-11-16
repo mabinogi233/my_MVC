@@ -19,7 +19,7 @@ public class fileUpload {
     @RequestMapping("/index")
     public void getIndex(Model model){
         try {
-            model.getResponse().sendRedirect("index.jsp");
+            model.getResponse().sendRedirect("localhost:8080\\index.jsp");
         }catch (Exception e){
             e.printStackTrace();
         }
