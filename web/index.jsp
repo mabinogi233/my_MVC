@@ -1,16 +1,31 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LiuWenze
-  Date: 2020/9/11
-  Time: 23:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insert title here</title>
+  <%
+    String path=request.getContextPath();
+    request.setAttribute("path", path);
+  %>
+</head>
+<body>
+<form action="/uploadFile/up" method="post" enctype="multipart/form-data">
+  <table>
+    <tr>
+      <td>上传文件</td>
+      <td>
+        <input type="file" name="fileUP" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" />
+        <input type="reset" />
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
 </html>

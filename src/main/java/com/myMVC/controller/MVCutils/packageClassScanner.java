@@ -36,6 +36,7 @@ public class packageClassScanner {
         }
         //判断是外部jar包还是文件
         String protocol = url.getProtocol();
+        System.out.println("*****************\n"+protocol);
         if ("jar".equalsIgnoreCase(protocol)) {
 
             try {
@@ -72,6 +73,7 @@ public class packageClassScanner {
                     if((packagePath + "." + classPath).equals("com.myMVC.controller.connect_mybatis.mybatisSession")){
                         continue;
                     }
+
                     Class<?> aClass = Class.forName(packagePath + "." + classPath);
                     res.add(aClass);
                 } catch (ClassNotFoundException e) {

@@ -16,10 +16,13 @@ import com.myMVC.controller.frameException.MVCException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
-
+/**
+ * 动态代理测试
+ */
 public class mainTest {
-    public static void main(String[] args) throws MVCException {
+    public static void main(String [] args) throws MVCException, ClassNotFoundException {
         add_beans.init();
+        Class.forName("com.myMVC.controller.proxy.mainProxy");
         mainProxyTest m = (mainProxyTest) beanFactory.getBean("mainProxyTest");
         m.printx();
     }

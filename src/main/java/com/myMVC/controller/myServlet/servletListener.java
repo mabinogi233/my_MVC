@@ -25,6 +25,7 @@ public class servletListener implements ServletContextListener {
         //初始化框架
         try {
             add_beans.init();
+            System.out.println("初始化结束");
         } catch (MVCException e) {
             //输出框架异常
             e.printStackTrace();

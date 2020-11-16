@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * mybatis测试
+ */
+
 @Controller
 @RequestMapping("/run")
 public class myTest {

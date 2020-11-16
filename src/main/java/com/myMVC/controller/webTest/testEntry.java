@@ -7,6 +7,10 @@ import com.myMVC.controller.annotate.bean.Prototype;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 单例模式bean测试
+ */
+
 @Bean
 @Prototype
 public class testEntry {

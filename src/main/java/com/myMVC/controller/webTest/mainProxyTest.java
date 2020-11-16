@@ -7,6 +7,10 @@ import com.myMVC.controller.beanFactory.bean.add_beans;
 import com.myMVC.controller.beanFactory.bean.beanFactory;
 import com.myMVC.controller.frameException.MVCException;
 
+/**
+ * 动态代理测试
+ */
+
 @Bean
 @UseProxy("proxyTest")
 public class mainProxyTest {

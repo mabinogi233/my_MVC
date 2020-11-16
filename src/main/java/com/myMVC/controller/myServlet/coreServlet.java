@@ -11,6 +11,7 @@ import com.myMVC.controller.frameException.ExceptionCode;
 import com.myMVC.controller.frameException.MVCException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,7 @@ import java.lang.reflect.Method;
 
 
 //核心Servlet
-
+@MultipartConfig
 public class coreServlet extends HttpServlet {
     /**
      *
@@ -28,6 +29,7 @@ public class coreServlet extends HttpServlet {
      * @param response
      * @throws ServletException
      */
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException{
         String requestPath = request.getServletPath();
         System.out.println("请求地址："+requestPath);
@@ -46,10 +48,11 @@ public class coreServlet extends HttpServlet {
             try {
                 //前拦截器调用
                 Method preHandleMethod = preHandleFactory.getMethod(requestPath,true);
-                String preHandleClassName = preHandleMethod.getDeclaringClass().getSimpleName();
-                Object preHandleClass = beanFactory.getBean(preHandleClassName);
-                preHandleMethod.invoke(preHandleClass,request,response);
-
+                if (preHandleMethod!=null) {
+                    String preHandleClassName = preHandleMethod.getDeclaringClass().getSimpleName();
+                    Object preHandleClass = beanFactory.getBean(preHandleClassName);
+                    preHandleMethod.invoke(preHandleClass, request, response);
+                }
                 //处理request，通过request获取参数并调用
                 Model model = RequestValueOperator.getRequestValue(request,response);
 
@@ -61,9 +64,11 @@ public class coreServlet extends HttpServlet {
 
                 //后拦截器调用
                 Method postHandleMethod = postHandleFactory.getMethod(requestPath,true);
-                String postHandleClassName = postHandleMethod.getDeclaringClass().getSimpleName();
-                Object postHandleClass = beanFactory.getBean(postHandleClassName);
-                postHandleMethod.invoke(postHandleClass,request,response);
+                if(postHandleMethod!=null) {
+                    String postHandleClassName = postHandleMethod.getDeclaringClass().getSimpleName();
+                    Object postHandleClass = beanFactory.getBean(postHandleClassName);
+                    postHandleMethod.invoke(postHandleClass, request, response);
+                }
 
                 //将数据加载为json
                 if(return_json!=null){

@@ -7,6 +7,11 @@ import com.myMVC.controller.annotate.handle.PreHandle;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+/**
+ * 非动态代理拦截器测试
+ */
+
 @Handle("/run/test")
 public class testHandle {
     @PreHandle

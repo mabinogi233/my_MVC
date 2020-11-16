@@ -3,7 +3,6 @@ package com.myMVC.controller.webTest;
 
 import com.myMVC.controller.annotate.bean.Bean;
 import com.myMVC.controller.proxy.mainProxy;
-import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
